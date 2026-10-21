@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airport Check-in and Boarding System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">AIRPORT OPERATIONS</p>
+      <h1>Check-in &amp; Boarding System</h1>
+      <p class="subtitle">A simple demonstration of Queue and Priority Queue data structures.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel form-panel">
+      <h2>Add a passenger</h2>
+      <form id="passengerForm">
+        <label for="passengerName">Passenger name</label>
+        <input id="passengerName" name="passengerName" type="text"
+               placeholder="Enter passenger name" maxlength="60" required>
+
+        <label for="priority">Boarding priority</label>
+        <select id="priority" name="priority">
+          <option value="1">Regular passenger</option>
+          <option value="2">Priority boarding</option>
+        </select>
+        <p class="hint">Priority boarding is processed before regular boarding.</p>
+        <button class="button primary" type="submit">Add to check-in queue</button>
+      </form>
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <h2>Check-in queue</h2>
+          <p class="hint">First-In-First-Out (FIFO)</p>
+        </div>
+        <span id="checkInCount" class="count">0 passengers</span>
+      </div>
+      <div id="checkInList" class="passenger-list empty">No passengers waiting for check-in.</div>
+      <button id="processCheckIn" class="button secondary" type="button">Process next check-in</button>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <h2>Boarding queue</h2>
+          <p class="hint">Priority first; arrival order breaks ties.</p>
+        </div>
+        <span id="boardingCount" class="count">0 passengers</span>
+      </div>
+      <div id="boardingList" class="passenger-list empty">No passengers ready for boarding.</div>
+      <button id="boardPassenger" class="button primary" type="button">Board next passenger</button>
+    </section>
+
+    <section class="panel explanation">
+      <h2>How the data structures work</h2>
+      <div class="explanation-grid">
+        <article>
+          <h3>Queue</h3>
+          <p>Passengers join the end of the check-in line. The passenger who arrived first is checked in first.</p>
+        </article>
+        <article>
+          <h3>Priority Queue</h3>
+          <p>After check-in, priority passengers are selected before regular passengers. Passengers with the same priority keep their check-in order.</p>
+        </article>
+      </div>
+      <button id="resetSystem" class="button danger" type="button">Reset demonstration</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>Data Structures Mini Project · Airport Check-in and Boarding System</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
